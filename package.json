@@ -1,24 +1,49 @@
 {
-  "name": "storereact",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
-  },
-  "dependencies": {
-    "expo": "~43.0.2",
-    "expo-status-bar": "~1.1.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-native": "0.64.3",
-    "react-native-web": "0.17.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.9"
-  },
-  "private": true
+	"name": "storereact",
+	"version": "1.0.0",
+	"main": "node_modules/expo/AppEntry.js",
+	"scripts": {
+		"start": "expo start",
+		"android": "expo start --android",
+		"ios": "expo start --ios",
+		"web": "expo start --web",
+		"eject": "expo eject"
+	},
+	"dependencies": {
+		"@eva-design/eva": "^2.0.0-alpha.1",
+		"@react-native-community/masked-view": "^0.1.10",
+		"@react-navigation/bottom-tabs": "^5.2.7",
+		"@react-navigation/drawer": "^5.5.0",
+		"@react-navigation/material-top-tabs": "^5.1.10",
+		"@react-navigation/native": "^5.1.6",
+		"@react-navigation/stack": "^5.2.13",
+		"@ui-kitten/components": "^5.0.0-alpha.1",
+		"@ui-kitten/eva-icons": "^5.0.0-alpha.1",
+		"add": "^2.0.6",
+		"expo": "~43.0.2",
+		"expo-status-bar": "~1.1.0",
+		"firebase": "^8.2.3",
+		"react": "17.0.1",
+		"react-dom": "17.0.1",
+		"react-native": "0.64.3",
+		"react-native-gesture-handler": "^1.6.1",
+		"react-native-keyboard-aware-scroll-view": "^0.9.1",
+		"react-native-reanimated": "^1.8.0",
+		"react-native-safe-area-context": "^0.7.3",
+		"react-native-screens": "^2.6.0",
+		"react-native-svg": "^12.1.0",
+		"react-native-tab-view": "^2.14.0",
+		"react-native-web": "0.17.1",
+		"react-redux": "^7.2.0",
+		"redux": "^4.0.5",
+		"redux-thunk": "^2.3.0",
+		"expo-web-browser": "~10.0.3",
+		"expo-auth-session": "~3.4.2",
+		"expo-random": "~12.0.1",
+		"expo-google-sign-in": "~10.0.3"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.12.9"
+	},
+	"private": true
 }
