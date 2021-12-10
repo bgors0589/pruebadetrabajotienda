@@ -1,7 +1,13 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Divider, Drawer, DrawerItem } from "@ui-kitten/components";
+import {
+	Divider,
+	Drawer,
+	DrawerItem,
+	Avatar,
+	Layout,
+} from "@ui-kitten/components";
 import React from "react";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet, Text } from "react-native";
 
 import { BellIcon, ForwardIcon, HomeIcon, LogoutIcon } from "./icons";
 
@@ -19,23 +25,48 @@ import BottomNavigation from "./bottomNavigator";
 
 const { Navigator, Screen } = createDrawerNavigator();
 
-const Header = (props) => (
-	<>
-		<ImageBackground
-			style={[props.style, styles.header]}
-			source={require("./../assets/icon-.png")}
-		/>
-		<Divider />
-	</>
-);
+const Header = (props) => {
+	const user = useSelector((store) => store.auth.user);
+	return (
+		<>
+			<ImageBackground
+				style={[props.style, styles.header]}
+				source={require("./../assets/icon-.png")}
+			/>
+			{user && (
+				<Layout style={styles.containerLayout}>
+					<Layout style={styles.layout} level="2">
+						<Avatar
+							size="giant"
+							source={{
+								uri: user.photoURI
+									? user.photoURI
+									: "https://akveo.github.io/react-native-ui-kitten/docs/assets/playground-build/static/media/icon.a78e4b51.png",
+							}}
+						/>
+					</Layout>
+
+					<Layout style={styles.layout} level="1">
+						<Text>{user.displayName}</Text>
+					</Layout>
+				</Layout>
+			)}
+
+			<Divider />
+		</>
+	);
+};
 
 const DrawerContent = ({ navigation, state }) => {
 	const [selectedIndex, setSelectedIndex] = React.useState(null);
 
-	const navigate = (index) => {
+	const navigate = async (index) => {
 		setSelectedIndex(index);
 		console.log("routeNames", state.routeNames);
 		console.log("routeNames", index);
+		if (index.row == 2) {
+			await firebase.auth().signOut();
+		}
 		navigation.navigate(state.routeNames[index.row]);
 	};
 	return (
@@ -101,6 +132,15 @@ const styles = StyleSheet.create({
 	header: {
 		height: 250,
 		flexDirection: "row",
+		alignItems: "center",
+	},
+	containerLayout: {
+		flex: 1,
+		flexDirection: "row",
+	},
+	layout: {
+		flex: 1,
+		justifyContent: "center",
 		alignItems: "center",
 	},
 });

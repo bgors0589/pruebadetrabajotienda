@@ -19,6 +19,12 @@ import {
 import { CartIcon, BackIcon } from "../components/icons";
 import Data from "../redux/data/data.json";
 import HandleBack from "../Back";
+import { useDispatch } from "react-redux";
+import {
+	addToCartAction,
+	clearCartAction,
+	delFromCartAction,
+} from "./../redux/cartDucks";
 
 const productSwitch = (category) => {
 	switch (category) {
@@ -38,6 +44,13 @@ const productSwitch = (category) => {
 };
 
 const ProductListScreen = ({ navigation, route }) => {
+	const dispatch = useDispatch();
+
+	const addToCart = (id) => {
+		//console.log(id);
+		dispatch(addToCartAction(id));
+	};
+
 	/* 2. Get the param */
 	const { category } = route.params;
 
@@ -49,9 +62,9 @@ const ProductListScreen = ({ navigation, route }) => {
 		navigation && navigation.navigate("ProductDetail", { info: info });
 	};
 
-	const onItemCartPress = (index) => {
-		// navigation && navigation.navigate("ShoppingCart");
-	};
+	// const onItemCartPress = (id) => {
+	// 	// navigation && navigation.navigate("ShoppingCart");
+	// };
 
 	const renderItemFooter = (info) => (
 		<View style={styles.itemFooter}>
@@ -60,7 +73,7 @@ const ProductListScreen = ({ navigation, route }) => {
 				style={styles.iconButton}
 				size="small"
 				accessoryRight={CartIcon}
-				onPress={() => onItemCartPress(info.index)}
+				onPress={() => addToCart(info.item.id)}
 			/>
 		</View>
 	);

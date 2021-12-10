@@ -10,6 +10,7 @@ import {
 	TwitterIcon,
 } from "../components/icons";
 import * as WebBrowser from "expo-web-browser";
+import { ResponseType } from "expo-auth-session";
 import * as Google from "expo-auth-session/providers/google";
 import HandleBack from "../Back";
 import * as firebase from "firebase";
@@ -17,23 +18,37 @@ import * as firebase from "firebase";
 WebBrowser.maybeCompleteAuthSession();
 
 const LoginScreen = ({ navigation }) => {
-	const [request, response, promptAsync] = Google.useAuthRequest({
-		expoClientId:
-			"899300749626-4774hoj1a989hnon7cjpq4tvlu6o4899.apps.googleusercontent.com",
-		// iosClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
-		androidClientId:
-			"899300749626-qlccd3sqmb4as1plm4sqqcica65a2l6f.apps.googleusercontent.com",
-		// webClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
+	const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+		clientId:
+			"438790431527-ifoib2a2kut25v9sk6fkd0qh6f60db5l.apps.googleusercontent.com",
 	});
 
-	console.log(response, request);
-
 	React.useEffect(() => {
-		console.log(response);
+		// console.log(response);
 		if (response?.type === "success") {
-			const { authentication } = response;
-
-			navigation && navigation.navigate("Home");
+			const { id_token } = response.params;
+			var provider = new firebase.auth.GoogleAuthProvider();
+			const credential = provider.credential(id_token);
+			// const credential = firebase.auth.GoogleAuthProvider.credential(
+			// 	// authentication.idToken,
+			// 	null,
+			// 	authentication.accessToken
+			// );
+			firebase
+				.auth()
+				.signInWithCredential(credential)
+				.then((userCredential) => {
+					// Signed in
+					var user = userCredential.user;
+					navigation && navigation.navigate("Home");
+					// ...
+				})
+				.catch((error) => {
+					console.log(error);
+					var errorCode = error.code;
+					var errorMessage = error.message;
+					// ...
+				});
 		}
 	}, [response]);
 	const [email, setEmail] = React.useState();
@@ -46,7 +61,7 @@ const LoginScreen = ({ navigation }) => {
 	};
 	const onSignInButtonPress = async () => {
 		let emailValid = await validate(email);
-		if (emailValid !== 1) {
+		if (!emailValid) {
 			Alert.alert(
 				"Informacion",
 				"Ha ocurrido un error, revise todos los campos e intente nuevamente",
@@ -113,7 +128,7 @@ const LoginScreen = ({ navigation }) => {
 								placeholder="Email"
 								status="control"
 								value={email}
-								onChangeText={setEmail}
+								onChangeText={(e) => setEmail(e)}
 							/>
 							<Input
 								label="CONTRASEÑA"
@@ -122,7 +137,7 @@ const LoginScreen = ({ navigation }) => {
 								placeholder="Contraseña"
 								value={password}
 								secureTextEntry={true}
-								onChangeText={setPassword}
+								onChangeText={(e) => setPassword(e)}
 							/>
 							<View style={styles.forgotPasswordContainer}>
 								<Button

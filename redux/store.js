@@ -4,9 +4,11 @@ import thunk from "redux-thunk";
 // import persistState from "redux-localstorage";
 
 import AuthReducer from "./authDucks";
+import shoppingReducer from "./cartDucks";
 
 const rootReducer = combineReducers({
 	auth: AuthReducer,
+	cart: shoppingReducer,
 });
 
 let mainEnhancer = compose(

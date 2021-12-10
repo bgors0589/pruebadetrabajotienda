@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Alert } from "react-native";
 import {
 	Button,
 	CheckBox,
@@ -21,6 +21,7 @@ import {
 } from "../components/icons";
 import { KeyboardAvoidingView } from "../components/3rd-party";
 import HandleBack from "../Back";
+import * as firebase from "firebase";
 
 const SignupScreen = ({ navigation }) => {
 	const [firstName, setFirstName] = React.useState();
@@ -41,10 +42,10 @@ const SignupScreen = ({ navigation }) => {
 
 	const onSignUpButtonPress = async () => {
 		let emailValid = await validate(email);
-		if (emailValid !== 1) {
+		if (!emailValid) {
 			Alert.alert(
 				"Informacion",
-				"Ha ocurrido un error, revise todos los campos e intente nuevamente",
+				"Ha ocurrido un error em, revise todos los campos e intente nuevamente",
 				[{ text: "intente de nuevo", onPress: () => null }]
 			);
 			return;
@@ -52,7 +53,7 @@ const SignupScreen = ({ navigation }) => {
 		if (password.lenght < 6) {
 			Alert.alert(
 				"Informacion",
-				"Ha ocurrido un error, revise todos los campos e intente nuevamente",
+				"Ha ocurrido un error const, revise todos los campos e intente nuevamente",
 				[{ text: "intente de nuevo", onPress: () => null }]
 			);
 			return;
@@ -65,17 +66,22 @@ const SignupScreen = ({ navigation }) => {
 		}
 		firebase
 			.auth()
-			.signInWithEmailAndPassword(email, password)
+			.createUserWithEmailAndPassword(email, password)
 			.then((snap) => {
 				console.log(snap);
-				// snap.user.updateProfile({
-				// 	displayName: firstName + " " + lastName,
-				// })
-				// .then(function () {})
-				// .catch((e)=>{console.log(e)})
-				// navigation && navigation.navigate("Home");
+				snap.user
+					.updateProfile({
+						displayName: firstName + " " + lastName,
+					})
+					.then(function () {
+						navigation && navigation.navigate("Home");
+					})
+					.catch((e) => {
+						console.log(e);
+					});
 			})
 			.catch((error) => {
+				console.log(error);
 				Alert.alert("Error", "Ocurrio un error", [
 					{ text: "intente de nuevo", onPress: () => null },
 				]);
@@ -85,6 +91,40 @@ const SignupScreen = ({ navigation }) => {
 	const onSignInButtonPress = () => {
 		navigation && navigation.navigate("Login");
 	};
+
+	const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+		clientId:
+			"438790431527-ifoib2a2kut25v9sk6fkd0qh6f60db5l.apps.googleusercontent.com",
+	});
+
+	React.useEffect(() => {
+		// console.log(response);
+		if (response?.type === "success") {
+			const { id_token } = response.params;
+			var provider = new firebase.auth.GoogleAuthProvider();
+			const credential = provider.credential(id_token);
+			// const credential = firebase.auth.GoogleAuthProvider.credential(
+			// 	// authentication.idToken,
+			// 	null,
+			// 	authentication.accessToken
+			// );
+			firebase
+				.auth()
+				.signInWithCredential(credential)
+				.then((userCredential) => {
+					// Signed in
+					var user = userCredential.user;
+					navigation && navigation.navigate("Home");
+					// ...
+				})
+				.catch((error) => {
+					console.log(error);
+					var errorCode = error.code;
+					var errorMessage = error.message;
+					// ...
+				});
+		}
+	}, [response]);
 
 	return (
 		<HandleBack>
@@ -119,6 +159,9 @@ const SignupScreen = ({ navigation }) => {
 							size="giant"
 							status="basic"
 							accessoryLeft={GoogleIcon}
+							onPress={() => {
+								promptAsync();
+							}}
 						/>
 						<Button
 							appearance="ghost"
@@ -148,7 +191,7 @@ const SignupScreen = ({ navigation }) => {
 						label="NOMBRES"
 						autoCapitalize="words"
 						value={firstName}
-						onChangeText={setFirstName}
+						onChangeText={(e) => setFirstName(e)}
 					/>
 					<Input
 						style={styles.formInput}
@@ -156,7 +199,7 @@ const SignupScreen = ({ navigation }) => {
 						label="APELLIDOS"
 						autoCapitalize="words"
 						value={lastName}
-						onChangeText={setLastName}
+						onChangeText={(e) => setLastName(e)}
 					/>
 					{/* <Datepicker
 					style={styles.formInput}
@@ -170,7 +213,7 @@ const SignupScreen = ({ navigation }) => {
 						placeholder="bryandgonz@gmail.com"
 						label="EMAIL"
 						value={email}
-						onChangeText={setEmail}
+						onChangeText={(e) => setEmail(e)}
 					/>
 					<Input
 						style={styles.formInput}
@@ -178,7 +221,7 @@ const SignupScreen = ({ navigation }) => {
 						placeholder="**************"
 						secureTextEntry={true}
 						value={password}
-						onChangeText={setPassword}
+						onChangeText={(e) => setPassword(e)}
 					/>
 					<CheckBox
 						style={styles.termsCheckBox}

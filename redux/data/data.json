@@ -33,6 +33,7 @@
 	],
 	"libros": [
 		{
+			"id": 0,
 			"title": "Clean code",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/books/clean_code.jpg",
 			"category": "Libros",
@@ -58,6 +59,7 @@
 			]
 		},
 		{
+			"id": 1,
 			"title": "Code Complete",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/books/code_complete.jpg",
 			"category": "Libros",
@@ -83,6 +85,7 @@
 			]
 		},
 		{
+			"id": 2,
 			"title": "Code Refactor",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/books/code_refactor.jpg",
 			"category": "Libros",
@@ -108,6 +111,7 @@
 			]
 		},
 		{
+			"id": 3,
 			"title": "Design Patterns",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/books/design_patterns.jpg",
 			"category": "Libros",
@@ -133,6 +137,7 @@
 			]
 		},
 		{
+			"id": 4,
 			"title": "Pragmatic Programmer",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/books/pragmatic_programmer.jpg",
 			"category": "Libros",
@@ -160,6 +165,7 @@
 	],
 	"ropa": [
 		{
+			"id": 5,
 			"title": "Traje 1",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/clothings/clothing_1.jpg",
 			"category": "Ropa",
@@ -185,6 +191,7 @@
 			]
 		},
 		{
+			"id": 6,
 			"title": "Traje 2",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/clothings/clothing_2.jpg",
 			"category": "Ropa",
@@ -210,6 +217,7 @@
 			]
 		},
 		{
+			"id": 7,
 			"title": "Traje 3",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/clothings/clothing_3.jpg",
 			"category": "Ropa",
@@ -235,6 +243,7 @@
 			]
 		},
 		{
+			"id": 8,
 			"title": "Traje 4",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/clothings/clothing_4.jpg",
 			"category": "Ropa",
@@ -260,6 +269,7 @@
 			]
 		},
 		{
+			"id": 9,
 			"title": "Traje 5",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/clothings/clothing_5.jpg",
 			"category": "Ropa",
@@ -287,6 +297,7 @@
 	],
 	"laptos": [
 		{
+			"id": 10,
 			"title": "Laptop 1",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/laptops/laptop_1.jpg",
 			"category": "Laptops",
@@ -312,6 +323,7 @@
 			]
 		},
 		{
+			"id": 11,
 			"title": "Laptop 2",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/laptops/laptop_2.jpg",
 			"category": "Laptops",
@@ -337,6 +349,7 @@
 			]
 		},
 		{
+			"id": 12,
 			"title": "Laptop 3",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/laptops/laptop_3.jpg",
 			"category": "Laptops",
@@ -362,6 +375,7 @@
 			]
 		},
 		{
+			"id": 13,
 			"title": "Laptop 4",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/laptops/laptop_4.jpg",
 			"category": "Laptops",
@@ -387,6 +401,7 @@
 			]
 		},
 		{
+			"id": 14,
 			"title": "Laptop 5",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/laptops/laptop_5.jpg",
 			"category": "Laptops",
@@ -414,6 +429,7 @@
 	],
 	"accesorios": [
 		{
+			"id": 15,
 			"title": "Accesorio 1",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/products/access_1.png",
 			"category": "Accesorios",
@@ -439,6 +455,7 @@
 			]
 		},
 		{
+			"id": 16,
 			"title": "Accesorio 2",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/products/access_2.jpg",
 			"category": "Accesorios",
@@ -464,6 +481,7 @@
 			]
 		},
 		{
+			"id": 17,
 			"title": "Accesorio 3",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/products/access_3.jpg",
 			"category": "Accesorios",
@@ -489,6 +507,7 @@
 			]
 		},
 		{
+			"id": 18,
 			"title": "Accesorio 4",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/products/access_4.jpg",
 			"category": "Accesorios",
@@ -514,6 +533,7 @@
 			]
 		},
 		{
+			"id": 19,
 			"title": "Accesorio 5",
 			"image": "https://raw.githubusercontent.com/ikismail/react-native-shopping-cart/master/assets/products/access_5.jpg",
 			"category": "Accesorios",
@@ -541,6 +561,7 @@
 	],
 	"celulares": [
 		{
+			"id": 20,
 			"title": "Celular 1",
 			"image": "https://www.lg.com/co/images/celulares/md07516970/Basic_350.jpg",
 			"category": "Celulares",
@@ -566,6 +587,7 @@
 			]
 		},
 		{
+			"id": 21,
 			"title": "Celular 2",
 			"image": "https://www.ktronix.com/medias/6941059648758-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wxNDExODl8aW1hZ2UvanBlZ3xpbWFnZXMvaDc0L2hiNC85NzY3MjMxOTE0MDE0LmpwZ3xhNTU5NDAzNjE4Nzk4MGEyYjU3OWI3OTNjZjFhN2M1OTFmMTY5MTBkODI2NDcxYzdjZjI5OWZmZmVhZmNlZDFl",
 			"category": "Celulares",
@@ -591,6 +613,7 @@
 			]
 		},
 		{
+			"id": 22,
 			"title": "Celular 3",
 			"image": "https://www.alkomprar.com/medias/8806090548550-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wyMzkwMzJ8aW1hZ2UvanBlZ3xpbWFnZXMvaDdjL2gyMi85OTU3MDk4ODE1NTE4LmpwZ3w5NTY2ZDU4NGI4YjcwYjE3NGQ4ODM1OWM0YjQ2ZWQzNTIzMzQzNjRjZmRhMTc2ZmYxMTE5MTNhYmQ5ZmQxYjJm",
 			"category": "Celulares",
@@ -616,6 +639,7 @@
 			]
 		},
 		{
+			"id": 23,
 			"title": "Celular 4",
 			"image": "https://www.alkosto.com/medias/6935117828831-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wxNDE1NDZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc3L2hhYS8xMDU5MDM0NTIzMjQxNC5qcGd8ODAzYTQ2Yzc2NDNiNjA5YzczOTAyYWUzZmM0ODFiYzMzZmRmODAwZmI3YWQ1OGI3NjkxZjA3MWY0MWMyZDI3Yg",
 			"category": "Celulares",
@@ -641,6 +665,7 @@
 			]
 		},
 		{
+			"id": 24,
 			"title": "Celular 5",
 			"image": "https://tiendaste-ka.com/582-large_default/celular-samsung-a51-liberado-protector-vidrio.jpg",
 			"category": "Celulares",
